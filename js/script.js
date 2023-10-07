@@ -52,10 +52,32 @@ window.onscroll = () => {
     footer.classList.toggle('show-animate', this.innerHeight + this.scrollY >= document.scrollingElement.scrollHeight)
 }
 
-// form validator
+// title blinker
 
-    var frmvalidator  = new Validator("contactform");
-    frmvalidator.addValidation("name","req","Please provide your name");
-    frmvalidator.addValidation("email","req","Please provide your email");
-    frmvalidator.addValidation("email","email",
-      "Please enter a valid email address");
+window.onload = function() {
+
+  var pageTitle = document.title;
+  var attentionMessage = '*Come Back!';
+  var blinkEvent = null;
+
+  document.addEventListener('visibilitychange', function(e) {
+    var isPageActive = !document.hidden;
+
+    if(!isPageActive){
+      blink();
+    }else {
+      document.title = pageTitle;
+      clearInterval(blinkEvent);
+    }
+  });
+
+  function blink(){
+    blinkEvent = setInterval(function() {
+      if(document.title === attentionMessage){
+        document.title = pageTitle;
+      }else {
+        document.title = attentionMessage;
+      }
+    }, 100);
+  }
+};
