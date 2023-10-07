@@ -19,7 +19,7 @@ window.onscroll = () => {
         let height = sec.offsetHeight;
         let id = sec.getAttribute('id');
 
-        if(top >= offset && top < offset + height) {
+        if (top >= offset && top < offset + height) {
             // active navbar links
 
             navLinks.forEach(links => {
@@ -52,32 +52,43 @@ window.onscroll = () => {
     footer.classList.toggle('show-animate', this.innerHeight + this.scrollY >= document.scrollingElement.scrollHeight)
 }
 
-// title blinker
+//  Title changer 
 
-window.onload = function() {
+window.onload = function () {
 
-  var pageTitle = document.title;
-  var attentionMessage = '*Come Back!';
-  var blinkEvent = null;
+    var pageTitle = document.title;
+    var attentionMessage = '*Come Back : !';
+    var blinkEvent = null;
 
-  document.addEventListener('visibilitychange', function(e) {
-    var isPageActive = !document.hidden;
+    document.addEventListener('visibilitychange', function (e) {
+        var isPageActive = !document.hidden;
 
-    if(!isPageActive){
-      blink();
-    }else {
-      document.title = pageTitle;
-      clearInterval(blinkEvent);
+        if (!isPageActive) {
+            blink();
+        } else {
+            document.title = pageTitle;
+            clearInterval(blinkEvent);
+        }
+    });
+
+    function blink() {
+        blinkEvent = setInterval(function () {
+            if (document.title === attentionMessage) {
+                document.title = pageTitle;
+            } else {
+                document.title = attentionMessage;
+            }
+        }, 100);
     }
-  });
-
-  function blink(){
-    blinkEvent = setInterval(function() {
-      if(document.title === attentionMessage){
-        document.title = pageTitle;
-      }else {
-        document.title = attentionMessage;
-      }
-    }, 100);
-  }
 };
+
+//    Change copyright to current year
+
+const year = document.querySelector('.footer-text p');
+
+const d = new Date();
+let currentYear = d.getFullYear();
+
+year.innerHTML = `Copyright &copy; ${currentYear} by itz_pa1 | All Rights Reserved.
+
+<span class="animate scroll" style="--i:1"></span>`;
