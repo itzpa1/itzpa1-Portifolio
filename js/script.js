@@ -89,6 +89,6 @@ const year = document.querySelector('.footer-text p');
 const d = new Date();
 let currentYear = d.getFullYear();
 
-year.innerHTML = `Copyright &copy; ${currentYear} by itz_pa1 | All Rights Reserved.
+year.innerHTML = `Copyright &copy; ${currentYear}  | All Rights Reserved | Designed with <i class="fa fa-heart pulse"></i> by <a title="Linkedin"  href="https://www.linkedin.com/in/itzpa1"> itz_pa1</a>
 
 <span class="animate scroll" style="--i:1"></span>`;
